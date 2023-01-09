@@ -39,8 +39,8 @@ os.Exit(1) // failure
 ```
 
 ```python
-sys.exit(0) // success
-sys.exit(1) // failure
+sys.exit(0) # success
+sys.exit(1) # failure
 ```
 
 But the system call `exit` accepts values between 0 and 255, leaving 254 different ways of expressing failure.
