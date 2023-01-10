@@ -2,8 +2,8 @@ on: push
 
 name: CI
 jobs:
-  test:
-    name: Test
+  go:
+    name: Test (Go)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,3 +15,11 @@ jobs:
 
       - name: Test
         run: go test -v
+
+  rust:
+    name: Test (Rust)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: bin/cargo test --all-features --all-targets --locked

@@ -1,0 +1,11 @@
+[package]
+name = "examples-rs"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "ok"
+
+[dependencies]
+semantic-exit = { path = "../" }
+signal-hook = "0.3.14"
