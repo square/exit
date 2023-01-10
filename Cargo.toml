@@ -2,7 +2,7 @@
 name = "semantic-exit"
 description = "Semantic exit codes inspired by HTTP status codes"
 authors = ["Bob Lail <lail@squareup.com>", "Scott Robinson <ssr@squareup.com>"]
-license = "Apache-2"
+license = "Apache-2.0"
 repository = "https://github.com/square/exit"
 readme = "README.md"
 version = "1.0.0"
