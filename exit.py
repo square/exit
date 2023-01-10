@@ -6,8 +6,9 @@ This package defines exit codes in two ranges. Exit Codes 80-99 indicate a user 
 of some sort. Exit Codes 100-119 indicate software or system error of some sort.
 """
 
-from enum import Enum
 import sys
+from enum import Enum
+
 
 # Code is the exit code that is passed to the system call `exit` when the
 # program terminates. Conventionally, the value zero indicates success and all
