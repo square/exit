@@ -1,3 +1,5 @@
 /.hermit
 
 /target
+__pycache__
+*.pyc
