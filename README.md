@@ -9,6 +9,15 @@ os.Exit(exit.Forbidden) // The user isn't permitted to perform this action
 os.Exit(exit.Unavailable) // An API this program consumes isn't available
 ```
 
+#### Rust
+
+```rust
+use semantic_exit::{exit, Code};
+
+exit(Code::Forbidden);
+exit(Code::Unavailable);
+```
+
 See [the complete list of exit codes](#the-codes).
 
 ### About
