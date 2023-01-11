@@ -24,7 +24,7 @@ const (
 // Exit Codes 80-99 are reserved for user errors.
 const (
 	// UsageError indicates that the program exited unsuccessfully
-	// because it was was used incorrectly.
+	// because it was used incorrectly.
 	//
 	// Examples: a required argument was omitted or an invalid value
 	// was supplied for a flag.

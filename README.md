@@ -18,6 +18,15 @@ exit(Code::Forbidden);
 exit(Code::Unavailable);
 ```
 
+#### Python
+
+```python
+import exit
+
+exit.Code.Forbidden.exit()
+exit.Code.Unavailable.exit()
+```
+
 See [the complete list of exit codes](#the-codes).
 
 ### About
