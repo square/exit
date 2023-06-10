@@ -3,6 +3,7 @@ package exit
 import (
 	_ "embed"
 	"go/ast"
+	"go/importer"
 	"go/parser"
 	"go/token"
 	"go/types"
@@ -17,11 +18,8 @@ var readme string
 var src string
 
 func TestExitCodesMatchReadme(t *testing.T) {
-	var (
-		f    *ast.File
-		conf types.Config
-		err  error
-	)
+	var f *ast.File
+	var err error
 
 	re := regexp.MustCompile("\\| (\\d+) \\| `(\\w+)` \\| .* \\|\n")
 	expectedConstants := make(map[string]string)
@@ -38,6 +36,7 @@ func TestExitCodesMatchReadme(t *testing.T) {
 	// We create an empty map for each kind of input
 	// we're interested in, and Check populates them.
 	info := types.Info{Defs: make(map[*ast.Ident]types.Object)}
+	conf := types.Config{Importer: importer.Default()}
 	if _, err = conf.Check("", fset, []*ast.File{f}, &info); err != nil {
 		t.Error(err)
 	}
