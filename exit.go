@@ -7,6 +7,11 @@ of some sort. Exit Codes 100-119 indicate software or system error of some sort.
 */
 package exit
 
+import (
+	"errors"
+	"fmt"
+)
+
 // Code is the exit code that is passed to the system call `exit`
 // when the program terminates. Conventionally, the value zero indicates
 // success and all other values (1-255) indicate failure.
@@ -94,4 +99,47 @@ func IsSignal(code Code) bool {
 	//
 	// https://pkg.go.dev/os#ProcessState.ExitCode
 	return code == -1 || code > 128 && code < 255
+}
+
+var (
+	ErrNotOK             = Error{Code: NotOK}
+	ErrUsageError        = Error{Code: UsageError}
+	ErrUnknownSubcommand = Error{Code: UnknownSubcommand}
+	ErrRequirementNotMet = Error{Code: RequirementNotMet}
+	ErrForbidden         = Error{Code: Forbidden}
+	ErrMovedPermanently  = Error{Code: MovedPermanently}
+	ErrInternalError     = Error{Code: InternalError}
+	ErrUnavailable       = Error{Code: Unavailable}
+)
+
+func FromError(err error) Code {
+	var e Error
+	if errors.As(err, &e) {
+		return e.Code
+	} else if err == nil {
+		return OK
+	} else {
+		return NotOK
+	}
+}
+
+func Wrap(err error, code Code) error {
+	return Error{Code: code, Cause: err}
+}
+
+type Error struct {
+	Code  Code
+	Cause error
+}
+
+func (e Error) Error() string {
+	if e.Cause != nil {
+		return fmt.Sprintf("exit %d: %s", e.Code, e.Cause)
+	} else {
+		return fmt.Sprintf("exit %d", e.Code)
+	}
+}
+
+func (e Error) Unwrap() error {
+	return e.Cause
 }
