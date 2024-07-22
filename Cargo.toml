@@ -15,5 +15,5 @@ thiserror = "1.0.62"
 
 [dev-dependencies]
 libc = "0.2"
-regex = "1.10.4"
+regex = "1.10.5"
 test-case = "3.3.1"
