@@ -134,7 +134,7 @@ type Error struct {
 
 func (e Error) Error() string {
 	if e.Cause != nil {
-		return fmt.Sprintf("exit %d: %s", e.Code, e.Cause)
+		return e.Cause.Error()
 	} else {
 		return fmt.Sprintf("exit %d", e.Code)
 	}
