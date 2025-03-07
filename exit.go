@@ -124,6 +124,13 @@ func FromError(err error) Code {
 	}
 }
 
+func WrapIf(err error, code Code) error {
+	if err == nil {
+		return nil
+	}
+	return Wrap(err, code)
+}
+
 func Wrap(err error, code Code) error {
 	return Error{Code: code, Cause: err}
 }
