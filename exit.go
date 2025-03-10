@@ -113,14 +113,22 @@ var (
 )
 
 func FromError(err error) Code {
-	var e Error
+	var e interface{ ExitCode() int }
+
 	if errors.As(err, &e) {
-		return e.Code
+		return e.ExitCode()
 	} else if err == nil {
 		return OK
 	} else {
 		return NotOK
 	}
+}
+
+func WrapIf(err error, code Code) error {
+	if err == nil {
+		return nil
+	}
+	return Wrap(err, code)
 }
 
 func Wrap(err error, code Code) error {
@@ -142,4 +150,8 @@ func (e Error) Error() string {
 
 func (e Error) Unwrap() error {
 	return e.Cause
+}
+
+func (e Error) ExitCode() int {
+	return int(e.Code)
 }
