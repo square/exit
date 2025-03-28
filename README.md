@@ -64,4 +64,4 @@ It defines codes in two [unreserved](#reserved-codes-and-prior-art) ranges: 80-9
 
 - Values above 128 are reserved for signals. (When a program is terminated with a signal, its exit code is 128 + the signal's numeric value. When you terminate a program with `Ctrl` `C`, for example, you send it the signal `SIGINT` — whose value is 2 — and the program exits with 130.) 
 - Bash [reserves 2, 126, and 127](https://tldp.org/LDP/abs/html/exitcodes.html).
-- [sysexits.h defines 64-78](https://github.com/bminor/glibc/blob/master/misc/sysexits.h#L96-L110). The `sysexits.h` codes were originally defined for `sendmail` but have been used many places since. ([Compare Semantic Exit Codes to sysexits.h codes](https://github.com/square/exit/wiki/Comparison-to-sysexits.h-Exit-Codes))
+- [sysexits.h defines 64-78](https://github.com/bminor/glibc/blob/master/misc/sysexits.h#L96-L110). The `sysexits.h` codes were originally defined for `sendmail` but have been used many places since. ([Compare Semantic Exit Codes to sysexits.h codes](./docs/sysexits.md))
