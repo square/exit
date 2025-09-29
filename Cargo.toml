@@ -11,7 +11,7 @@ edition = "2021"
 [dependencies]
 num-traits = "0.2"
 num-derive = "0.4"
-thiserror = "2.0.16"
+thiserror = "2.0.17"
 
 [dev-dependencies]
 libc = "0.2"
